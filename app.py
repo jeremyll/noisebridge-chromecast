@@ -7,12 +7,9 @@ import random
 from scrap import get_list
 
 
-import logging
-logging.basicConfig(level=logging.DEBUG)
+#import logging
+#logging.basicConfig(level=logging.DEBUG)
 
-
-# TODO: Remove this
-pychromecast.IGNORE_CEC.append('*')
 
 chromecasts = pychromecast.get_chromecasts()
 cast = None
