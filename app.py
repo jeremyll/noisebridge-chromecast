@@ -35,7 +35,7 @@ while True:
     print(player_state)
     current_app_id = cast.media_controller.app_id
     if player_state == 'UNKNOWN' or (
-            player_state == 'IDLE' and current_app_id == cast.media_controller.app_id):
+            player_state == 'IDLE'):
         # Mute it so it doesn't annoy anyone 
         cast.set_volume_muted(0)
         youtube_links = get_list()
