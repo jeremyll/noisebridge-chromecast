@@ -1,3 +1,3 @@
-pychromecast
+git+https://github.com/ur1katz/pychromecast.git@master#egg=pychromecast
 bs4
 requests

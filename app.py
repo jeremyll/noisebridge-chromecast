@@ -7,6 +7,13 @@ import random
 from scrap import get_list
 
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+
+# TODO: Remove this
+pychromecast.IGNORE_CEC.append('*')
+
 chromecasts = pychromecast.get_chromecasts()
 cast = None
 
@@ -21,12 +28,16 @@ if not cast:
 
 yt = youtube.YouTubeController()
 cast.register_handler(yt)
+app_id = cast.app_id
 
 while True:
-    print(cast.media_controller.status.player_state)
-    if cast.media_controller.status.player_state == 'UNKNOWN':
+    player_state = cast.media_controller.status.player_state
+    print(player_state)
+    current_app_id = cast.media_controller.app_id
+    if player_state == 'UNKNOWN' or (
+            player_state == 'IDLE' and current_app_id == cast.media_controller.app_id):
         # Mute it so it doesn't annoy anyone 
-        cast.volume_down(1)
+        cast.set_volume_muted(0)
         youtube_links = get_list()
         random_link = random.choice(youtube_links)
         print('next up: %s' % random_link)
@@ -39,5 +50,5 @@ while True:
         # Play next one
         yt.play_video(youtube_id)
 
-    print('sleeping for 30..')
-    sleep(30)
+    print('sleeping for 3..')
+    sleep(3)
