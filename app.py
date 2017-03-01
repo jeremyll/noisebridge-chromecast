@@ -23,8 +23,6 @@ if not cast:
     print("No cast.. bye.. =(")
     exit()
 
-yt = youtube.YouTubeController()
-cast.register_handler(yt)
 app_id = cast.app_id
 
 while True:
@@ -45,6 +43,8 @@ while True:
         print(youtube_id)
         
         # Play next one
+        yt = youtube.YouTubeController()
+        cast.register_handler(yt)
         yt.play_video(youtube_id)
 
     print('sleeping for 3..')
