@@ -30,7 +30,6 @@ look_back = 10
 
 while True:
     player_state = cast.media_controller.status.player_state
-    print(player_state)
     current_app_id = cast.media_controller.app_id
     if player_state == 'UNKNOWN' or (
             player_state == 'IDLE'):
@@ -62,5 +61,4 @@ while True:
         cast.register_handler(yt)
         yt.play_video(youtube_id)
 
-    print('sleeping for 3..')
     sleep(3)
