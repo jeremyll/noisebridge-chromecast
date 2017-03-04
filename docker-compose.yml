@@ -1,4 +1,5 @@
 app:
+  command: python app.py
   build: .
   volumes:
    - ".:/code/"
