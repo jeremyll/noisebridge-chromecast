@@ -32,7 +32,7 @@ while True:
     if player_state == 'UNKNOWN' or (
             player_state == 'IDLE'):
         # Mute it so it doesn't annoy anyone 
-        cast.set_volume_muted(0)
+        cast.set_volume(0)
         youtube_links = get_list()
         random_link = random.choice(youtube_links)
         print('next up: %s' % random_link)
