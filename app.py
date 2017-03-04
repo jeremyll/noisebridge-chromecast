@@ -25,6 +25,9 @@ if not cast:
 
 app_id = cast.app_id
 
+last_played = []
+look_back = 10
+
 while True:
     player_state = cast.media_controller.status.player_state
     print(player_state)
@@ -33,8 +36,20 @@ while True:
             player_state == 'IDLE'):
         # Mute it so it doesn't annoy anyone 
         cast.set_volume(0)
+
         youtube_links = get_list()
+        look_back = min(len(youtube_link), look_back)
         random_link = random.choice(youtube_links)
+        
+        # Make sure the random_link hasn't been played recently
+        while random_link in last_videos:
+            random_link = random.choice(youtube_links)
+
+        # Add choice to beginning of last_videos
+        last_videos = [choice] + last_videos
+        # Pop the oldest off the list
+        last_videos = last_videos[:look_back]
+
         print('next up: %s' % random_link)
         # Assume youtube link looks like this here:
         # 'https://www.youtube.com/watch?v=26AWdWr4AtA'
