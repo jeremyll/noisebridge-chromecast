@@ -37,7 +37,7 @@ while True:
         cast.set_volume(0)
 
         youtube_links = get_list()
-        look_back = min(len(youtube_link), look_back)
+        look_back = min(len(youtube_links), look_back)
         random_link = random.choice(youtube_links)
         
         # Make sure the random_link hasn't been played recently
