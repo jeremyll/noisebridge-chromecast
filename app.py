@@ -25,7 +25,7 @@ if not cast:
 
 app_id = cast.app_id
 
-last_played = []
+last_videos = []
 look_back = 10
 
 while True:
