@@ -45,7 +45,7 @@ while True:
             random_link = random.choice(youtube_links)
 
         # Add choice to beginning of last_videos
-        last_videos = [choice] + last_videos
+        last_videos = [random_link] + last_videos
         # Pop the oldest off the list
         last_videos = last_videos[:look_back]
 
